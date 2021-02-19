@@ -6,6 +6,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -145,11 +148,14 @@ public class AddActivity extends AppCompatActivity implements com.wdullaer.mater
         now.set(Calendar.HOUR_OF_DAY,hourOfDay);
         now.set(Calendar.MINUTE,minute);
         now.set(Calendar.SECOND,second);
-       ;
+
+        final String judul = "Jatuh Tempo Pembayaran untuk"+ editTextName.getText();
+        final String Isipesan = "coba hubungin"+editTextName.getText();
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        Intent telpon = new Intent("https://api.whatsapp.com/send?phone=+62" + editTextPhone + "&text=" + "Hallo " + editTextName + " Jangan Lupa Bayar Pinjaman Sebesar " + editTextAmount );
         intent.putExtra("test","I am a String");
 
-        NotifyMe.Builder notifyMe = new NotifyMe.Builder(getApplicationContext());
+ NotifyMe.Builder notifyMe = new NotifyMe.Builder(getApplicationContext());
 
         notifyMe.title("Ups sudah jatuh tempo pembayaran");
         notifyMe.content("Coba cek hutang ke "+editTextName.getText());
@@ -160,11 +166,14 @@ public class AddActivity extends AppCompatActivity implements com.wdullaer.mater
         notifyMe.large_icon(R.mipmap.ic_launcher_round);
         notifyMe.addAction(intent,"Snooze",false);
         notifyMe.addAction(new Intent(),"Dismiss",true,false);
-        notifyMe.addAction(intent,"done");
-
+        notifyMe.addAction(telpon,"done");
+        
         notifyMe.build();
 
+
     }
+
+
 
 
 }
