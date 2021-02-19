@@ -47,12 +47,12 @@ public class PeminjamanListAdapter extends RecyclerView.Adapter<PeminjamanListAd
 
         final Peminjaman peminjaman = listPeminjaman.get(i);
 
-        viewHolder.text_view_nama_peminjam.setText(peminjaman.getName());
-        viewHolder.text_view__nomor.setText(peminjaman.getTelphon());
-        viewHolder.text_view__hutang.setText(formatRupiah.format((double)(peminjaman.getAmount())));
-        viewHolder.text_view__keterangan.setText(peminjaman.getDescription());
-        viewHolder.text_view__tanggal_pinjam.setText(peminjaman.getDateOfLoan());
-        viewHolder.text_view__batas_tanggal.setText(peminjaman.getDateDue());
+        viewHolder.text_view_nama_peminjam.setText("Nama : "+peminjaman.getName());
+        viewHolder.text_view__nomor.setText("No Telp : "+peminjaman.getTelphon());
+        viewHolder.text_view__hutang.setText("Jumlah Pinjaman : "+formatRupiah.format((double)(peminjaman.getAmount())));
+        viewHolder.text_view__keterangan.setText("Tujuan : "+peminjaman.getDescription());
+        viewHolder.text_view__tanggal_pinjam.setText("Tanggal Peminjaman  : "+peminjaman.getDateOfLoan());
+        viewHolder.text_view__batas_tanggal.setText("Tanggal Jatuh Tempo : "+peminjaman.getDateDue());
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
