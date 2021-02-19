@@ -78,6 +78,7 @@ public class DetailActivity extends AppCompatActivity {
             mSisa.setText("Sudah Lunas");
             mSisa.setTextColor(Color.parseColor("#37ff00"));
             btnPembayaran2.setEnabled(false);
+            btnPembayaran2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.checklist, 0, 0, 0);
             btnPembayaran2.setText("SUDAH LUNAS");
 
         }else if (mPayment < peminjaman.getAmount()){
